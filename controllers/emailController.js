@@ -193,7 +193,7 @@ const validateEmail = (email) => {
     return emailRegex.test(email);
 };
 
-var a=0
+
 module.exports.sendEmails = async (req, res) => {
     try {
         if (!transporter) {
@@ -243,7 +243,7 @@ module.exports.sendEmails = async (req, res) => {
                     success = true;
 
                     // Add longer delay between successful sends
-                    await delay(25000); // 15 second delay between emails
+                    await delay(30000); // 15 second delay between emails
 
                 } catch (error) {
                     retries++;
