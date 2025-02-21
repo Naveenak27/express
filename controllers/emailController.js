@@ -193,6 +193,7 @@ const validateEmail = (email) => {
     return emailRegex.test(email);
 };
 
+var a=0
 module.exports.sendEmails = async (req, res) => {
     try {
         if (!transporter) {
