@@ -143,7 +143,7 @@ Job Application: ${job}
 
 Dear Hiring Team,
 
-I am writing to apply for the ${job} position at ${companyName}. With my strong foundation in web development and focus on creating efficient, user-friendly applications, I am confident in my ability to make meaningful contributions to your projects.
+I am writing to apply for the ${job} position at your company. With my strong foundation in web development and focus on creating efficient, user-friendly applications, I am confident in my ability to make meaningful contributions to your projects.
 
 My technical expertise includes:
 - Modern JavaScript (ES6+), TypeScript, and React ecosystem including Hooks and Context API
