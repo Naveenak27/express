@@ -17,13 +17,12 @@ const app = express();
 
 // Configure CORS to allow requests from your React app
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? 'https://your-production-domain.com'  // Replace with your production domain
-    : 'http://localhost:3000', // React development server
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type']
+    origin: process.env.NODE_ENV === 'production' 
+        ? 'https://express-2vzr.onrender.com' // Production URL
+        : 'http://localhost:3000', // React development server
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type']
 }));
-
 // Logging middleware
 app.use((req, res, next) => {
   console.log(`${new Date().toISOString()} ${req.method} ${req.url}`);
