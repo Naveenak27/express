@@ -15,6 +15,23 @@ if (!fs.existsSync(uploadsDir)) {
 
 const app = express();
 
+// Detailed CORS configuration
+const corsOptions = {
+    origin: ['https://resume-sender.netlify.app', 'http://localhost:3000'],
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+    maxAge: 86400 // 24 hours
+};
+
+// Apply CORS configuration BEFORE other middleware
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Enable pre-flight for all routes
+
+// Body parser middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // Logging middleware
 app.use((req, res, next) => {
     console.log(`${new Date().toISOString()} ${req.method} ${req.url}`);
@@ -46,11 +63,13 @@ const upload = multer({
     { name: 'csv', maxCount: 1 }
 ]);
 
-app.use(cors());
-app.use(express.json());
-
-// File upload endpoint with detailed error handling
+// File upload endpoint with CORS headers and error handling
 app.post('/send-emails', (req, res) => {
+    // Ensure CORS headers are set
+    res.header('Access-Control-Allow-Origin', 'https://resume-sender.netlify.app');
+    res.header('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
     upload(req, res, async (err) => {
         if (err) {
             console.error('Multer error:', err);
@@ -81,6 +100,14 @@ app.post('/send-emails', (req, res) => {
     });
 });
 
+// Handle preflight requests
+app.options('/send-emails', (req, res) => {
+    res.header('Access-Control-Allow-Origin', 'https://resume-sender.netlify.app');
+    res.header('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.status(200).send();
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
     console.error('Global error handler:', err);
@@ -92,8 +119,17 @@ app.use((err, req, res, next) => {
     });
 });
 
+// Basic security headers
+app.use((req, res, next) => {
+    res.header('X-Content-Type-Options', 'nosniff');
+    res.header('X-Frame-Options', 'DENY');
+    res.header('X-XSS-Protection', '1; mode=block');
+    next();
+});
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
     console.log(`Uploads directory: ${uploadsDir}`);
+    console.log('CORS enabled for:', corsOptions.origin);
 });
