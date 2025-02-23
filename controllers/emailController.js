@@ -293,7 +293,7 @@ const createEmailContent = (recipientEmail, resumePath, resumeFilename) => {
                                 <h1 class="accent-text" style="font-size: 28px; margin: 0 0 10px 0;">Naveen K</h1>
                                 <p class="white-text" style="margin: 0 0 30px 0;">Frontend Developer</p>
                                 
-                                <div style="margin: 30px 0; text-align: left;">
+                                <div style="margin: 30px 0; ">
                                     <p class="accent-text" style="margin: 8px 0;">Contact</p>
                                     <p class="white-text" style="margin: 8px 0;">📞 7548865624</p>
                                     <p style="margin: 8px 0;">
@@ -304,15 +304,6 @@ const createEmailContent = (recipientEmail, resumePath, resumeFilename) => {
                                     </p>
                                 </div>
     
-                                <div style="margin: 30px 0; text-align: left;">
-                                    <p class="accent-text" style="margin: 8px 0;">Social</p>
-                                    <p style="margin: 8px 0;">
-                                        <a href="javascript:void(0)" class="social-link">LinkedIn</a>
-                                    </p>
-                                    <p style="margin: 8px 0;">
-                                        <a href="javascript:void(0)" class="social-link">GitHub</a>
-                                    </p>
-                                </div>
                             </div>
                         </td>
     
