@@ -240,13 +240,16 @@ const createEmailContent = (recipientEmail, resumePath, resumeFilename) => {
         messageId: `${messageId}@${process.env.EMAIL_USER.split('@')[1]}`,
         headers: {
             'Precedence': 'bulk',
-            'Auto-Submitted': 'auto-generated'
+            'Auto-Submitted': 'auto-generated',
+            'X-Mailer': 'Custom Mailer',
+            'List-Unsubscribe': `<mailto:${process.env.EMAIL_USER}?subject=unsubscribe>`
         },
         html: `<!DOCTYPE html>
         <html lang="en">
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <title>Frontend Developer Application</title>
             <!--[if mso]>
             <style type="text/css">
@@ -263,187 +266,267 @@ const createEmailContent = (recipientEmail, resumePath, resumeFilename) => {
             </noscript>
             <![endif]-->
             <style>
+                /* Reset styles */
+                body, p, h1, h2, h3, h4, h5, h6, ul, li {
+                    margin: 0;
+                    padding: 0;
+                    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+                    line-height: 1.4;
+                }
+                
                 /* Base styles */
-                body { margin: 0; padding: 0; width: 100% !important; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-                img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; }
-                table { border-collapse: collapse !important; }
-                body { background-color: #f4f4f4; }
-    
-                /* Main container */
+                body {
+                    margin: 0;
+                    padding: 0;
+                    width: 100% !important;
+                    -webkit-text-size-adjust: 100%;
+                    -ms-text-size-adjust: 100%;
+                    background-color: #f4f4f4;
+                }
+                
+                img {
+                    border: 0;
+                    height: auto;
+                    line-height: 100%;
+                    outline: none;
+                    text-decoration: none;
+                    -ms-interpolation-mode: bicubic;
+                    max-width: 100%;
+                }
+                
+                table {
+                    border-collapse: collapse !important;
+                    padding: 0;
+                    mso-table-lspace: 0pt;
+                    mso-table-rspace: 0pt;
+                }
+                
+                /* Container styles */
                 .container {
-                    font-family: Arial, sans-serif;
-                    max-width: 800px;
+                    max-width: 600px !important;
                     margin: 0 auto;
                     background: #1a1a1a;
-                    color: #ffffff;
-                    border-radius: 15px;
+                    border-radius: 8px;
                     overflow: hidden;
                 }
-                .accent-text { color: #98ff00; }
-                .white-text { color: #ffffff; }
+                
+                .column {
+                    padding: 20px;
+                    vertical-align: top;
+                }
+                
+                /* Text styles */
+                .accent-text {
+                    color: #98ff00 !important;
+                    font-weight: bold;
+                }
+                
+                .white-text {
+                    color: #ffffff !important;
+                }
+                
+                /* Project card styles */
                 .project-card {
                     background: #1a1a1a;
                     padding: 15px;
                     margin: 0 0 15px 0;
-                    border-radius: 8px;
+                    border-radius: 4px;
+                    border: 1px solid #333333;
                 }
-                .skill-item {
-                    color: #ffffff;
-                    margin: 10px 0;
-                    padding-left: 20px;
-                    position: relative;
-                }
+                
+                /* Link styles */
                 .contact-link {
                     color: #98ff00;
                     text-decoration: none;
+                    display: inline-block;
+                    margin: 4px 0;
                 }
+                
                 .social-link {
                     color: #ffffff;
                     text-decoration: none;
+                    display: inline-block;
+                    margin: 4px 0;
                 }
-    
+                
                 /* Mobile styles */
-                @media only screen and (max-width: 600px) {
-                    .container { border-radius: 0 !important; }
-                    .columns {
-                        display: block !important;
+                @media screen and (max-width: 600px) {
+                    .container {
                         width: 100% !important;
+                        max-width: 100% !important;
+                        border-radius: 0 !important;
                     }
+                    
                     .column {
-                        display: block !important;
                         width: 100% !important;
-                        padding: 20px !important;
+                        display: block !important;
+                        box-sizing: border-box !important;
+                        padding: 15px !important;
                     }
+                    
                     .project-card {
                         margin: 0 0 10px 0 !important;
+                        padding: 12px !important;
                     }
+                    
+                    h1 {
+                        font-size: 24px !important;
+                        line-height: 28px !important;
+                    }
+                    
+                    h2 {
+                        font-size: 20px !important;
+                        line-height: 24px !important;
+                    }
+                    
+                    h3 {
+                        font-size: 18px !important;
+                        line-height: 22px !important;
+                    }
+                    
+                    p, li {
+                        font-size: 16px !important;
+                        line-height: 20px !important;
+                    }
+                    
                     .skill-item {
+                        margin: 8px 0 !important;
                         padding-left: 15px !important;
                     }
-                    h1 { font-size: 24px !important; }
-                    h2 { font-size: 20px !important; }
-                    h3 { font-size: 18px !important; }
-                    p { font-size: 16px !important; }
+                }
+                
+                /* Dark mode support */
+                @media (prefers-color-scheme: dark) {
+                    .container {
+                        background: #1a1a1a !important;
+                    }
+                    .project-card {
+                        background: #222222 !important;
+                    }
+                    .white-text {
+                        color: #ffffff !important;
+                    }
                 }
             </style>
         </head>
         <body style="margin: 0; padding: 0; background: #f4f4f4;">
-            <div style="max-width: 800px; margin: 0 auto;">
+            <div style="max-width: 600px; margin: 0 auto;">
                 <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
                     <tr>
                         <td>
                             <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" class="container">
-                                <tr class="columns">
+                                <tr>
                                     <!-- Left Column -->
-                                    <td class="column" style="width: 35%; background: #1a1a1a; vertical-align: top; padding: 30px;">
-                                        <h1 class="accent-text" style="font-size: 28px; margin: 0 0 10px 0;">Naveen K</h1>
-                                        <p class="white-text" style="margin: 0 0 30px 0;">Frontend Developer</p>
+                                    <td class="column" style="width: 35%; background: #1a1a1a;">
+                                        <h1 class="accent-text" style="margin: 0 0 10px 0;">Naveen K</h1>
+                                        <p class="white-text" style="margin: 0 0 20px 0;">Frontend Developer</p>
                                         
-                                        <div style="margin: 30px 0; text-align: left;">
-                                            <p class="accent-text" style="margin: 8px 0;">Contact</p>
-                                            <p class="white-text" style="margin: 8px 0;">📞 7548865624</p>
-                                            <p style="margin: 8px 0;">
+                                        <div style="margin: 20px 0;">
+                                            <p class="accent-text" style="margin: 0 0 8px 0;">Contact</p>
+                                            <p class="white-text" style="margin: 4px 0;">📞 7548865624</p>
+                                            <p style="margin: 4px 0;">
                                                 <a href="mailto:${process.env.EMAIL_USER}" class="contact-link">📧 Email</a>
                                             </p>
-                                            <p style="margin: 8px 0;">
+                                            <p style="margin: 4px 0;">
                                                 <a href="${process.env.PORTFOLIO}" class="contact-link">🌐 Portfolio</a>
                                             </p>
                                         </div>
     
-                                        <div style="margin: 30px 0; text-align: left;">
-                                            <p class="accent-text" style="margin: 8px 0;">Social</p>
-                                            <p style="margin: 8px 0;">
+                                        <div style="margin: 20px 0;">
+                                            <p class="accent-text" style="margin: 0 0 8px 0;">Social</p>
+                                            <p style="margin: 4px 0;">
                                                 <a href="javascript:void(0)" class="social-link">LinkedIn</a>
                                             </p>
-                                            <p style="margin: 8px 0;">
+                                            <p style="margin: 4px 0;">
                                                 <a href="javascript:void(0)" class="social-link">GitHub</a>
                                             </p>
                                         </div>
                                     </td>
     
                                     <!-- Right Column -->
-                                    <td class="column" style="width: 65%; background: #222222; vertical-align: top; padding: 30px;">
-                                        <div style="margin-bottom: 30px;">
-                                            <p class="white-text" style="line-height: 1.6; margin: 0 0 20px 0;">
+                                    <td class="column" style="width: 65%; background: #222222;">
+                                        <div style="margin-bottom: 25px;">
+                                            <p class="white-text" style="margin: 0 0 15px 0;">
                                                 Dear Hiring Manager,
                                             </p>
-                                            <p class="white-text" style="line-height: 1.6; margin: 0 0 20px 0;">
+                                            <p class="white-text" style="margin: 0 0 15px 0;">
                                                 I trust this message finds you well. I am Naveen, a Frontend Developer with over a year of experience crafting responsive web applications. I am writing to express my interest in contributing to your development team.
                                             </p>
                                         </div>
     
-                                        <div style="margin-bottom: 30px;">
-                                            <h2 class="accent-text" style="margin: 0 0 20px 0;">Technical Skills</h2>
+                                        <div style="margin-bottom: 25px;">
+                                            <h2 class="accent-text" style="margin: 0 0 15px 0;">Technical Skills</h2>
                                             <ul style="list-style-type: none; padding: 0; margin: 0;">
-                                                <li class="skill-item">
+                                                <li class="skill-item" style="margin: 8px 0; padding-left: 15px; position: relative;">
                                                     <span class="accent-text" style="position: absolute; left: 0;">▹</span>
                                                     Frontend Development: HTML5, CSS3, JavaScript (ES6+)
                                                 </li>
-                                                <li class="skill-item">
+                                                <li class="skill-item" style="margin: 8px 0; padding-left: 15px; position: relative;">
                                                     <span class="accent-text" style="position: absolute; left: 0;">▹</span>
                                                     React.js Development: Components, Hooks, Context API
                                                 </li>
-                                                <li class="skill-item">
+                                                <li class="skill-item" style="margin: 8px 0; padding-left: 15px; position: relative;">
                                                     <span class="accent-text" style="position: absolute; left: 0;">▹</span>
                                                     State Management: Redux Toolkit, React Query
                                                 </li>
-                                                <li class="skill-item">
+                                                <li class="skill-item" style="margin: 8px 0; padding-left: 15px; position: relative;">
                                                     <span class="accent-text" style="position: absolute; left: 0;">▹</span>
                                                     Backend Familiarity: Node.js, Express.js, MySQL
                                                 </li>
                                             </ul>
                                         </div>
     
-                                <div style="margin-bottom: 30px;">
-                                    <h2 class="accent-text" style="margin: 0 0 20px 0;">Project Portfolio</h2>
-                                    
-                                    <div class="project-card">
-                                        <h3 class="accent-text" style="margin: 0 0 10px 0;">Cleaning Service Web Application</h3>
-                                        <p class="white-text" style="margin: 0; line-height: 1.6;">
-                                            Created a responsive interface using React.js and Redux Toolkit, featuring reusable components and seamless API integration for real-time data management.
-                                        </p>
-                                    </div>
-        
-                                    <div class="project-card">
-                                        <h3 class="accent-text" style="margin: 0 0 10px 0;">Portfolio Website</h3>
-                                        <p class="white-text" style="margin: 0; line-height: 1.6;">
-                                            Developed a personal portfolio using HTML, CSS, and JavaScript, integrating Firebase for secure form submissions and enhanced user interaction.
-                                        </p>
-                                    </div>
-        
-                                    <div class="project-card">
-                                        <h3 class="accent-text" style="margin: 0 0 10px 0;">Khannan Finance Website</h3>
-                                        <p class="white-text" style="margin: 0; line-height: 1.6;">
-                                            Built a professional finance company website with responsive design, implementing Formspree for reliable contact form functionality and user engagement.
-                                        </p>
-                                    </div>
-        
-                                    <div class="project-card">
-                                        <h3 class="accent-text" style="margin: 0 0 10px 0;">Automatic Resume Sender</h3>
-                                        <p class="white-text" style="margin: 0; line-height: 1.6;">
-                                            Engineered an automated email solution using React.js frontend and Node.js/Express.js backend with Nodemailer, enabling efficient bulk resume distribution through CSV file processing.
-                                        </p>
-                                    </div>
-        
-                                    <div class="project-card">
-                                        <h3 class="accent-text" style="margin: 0 0 10px 0;">Vote Tracker</h3>
-                                        <p class="white-text" style="margin: 0; line-height: 1.6;">
-                                            Developed a React.js voting application with Firebase integration, featuring dynamic candidate selection by state and district, single-vote verification, and real-time top candidate tracking.
-                                        </p>
-                                    </div>
-        
-                                    <div class="project-card">
-                                        <h3 class="accent-text" style="margin: 0 0 10px 0;">Chennai Gated Website</h3>
-                                        <p class="white-text" style="margin: 0; line-height: 1.6;">
-                                            Designed and implemented a modern real estate platform using React.js, featuring an intuitive interface for property listings and comprehensive amenity showcases.
-                                        </p>
-                                    </div>
-                                </div>
-                                        <div style="margin-bottom: 30px;">
-                                            <p class="white-text" style="line-height: 1.6; margin: 0;">
+                                        <div style="margin-bottom: 25px;">
+                                            <h2 class="accent-text" style="margin: 0 0 15px 0;">Project Portfolio</h2>
+                                            
+                                            <div class="project-card">
+                                                <h3 class="accent-text" style="margin: 0 0 8px 0;">Cleaning Service Web Application</h3>
+                                                <p class="white-text" style="margin: 0;">
+                                                    Created a responsive interface using React.js and Redux Toolkit, featuring reusable components and seamless API integration for real-time data management.
+                                                </p>
+                                            </div>
+    
+                                            <div class="project-card">
+                                                <h3 class="accent-text" style="margin: 0 0 8px 0;">Portfolio Website</h3>
+                                                <p class="white-text" style="margin: 0;">
+                                                    Developed a personal portfolio using HTML, CSS, and JavaScript, integrating Firebase for secure form submissions and enhanced user interaction.
+                                                </p>
+                                            </div>
+    
+                                            <div class="project-card">
+                                                <h3 class="accent-text" style="margin: 0 0 8px 0;">Khannan Finance Website</h3>
+                                                <p class="white-text" style="margin: 0;">
+                                                    Built a professional finance company website with responsive design, implementing Formspree for reliable contact form functionality and user engagement.
+                                                </p>
+                                            </div>
+    
+                                            <div class="project-card">
+                                                <h3 class="accent-text" style="margin: 0 0 8px 0;">Automatic Resume Sender</h3>
+                                                <p class="white-text" style="margin: 0;">
+                                                    Engineered an automated email solution using React.js frontend and Node.js/Express.js backend with Nodemailer, enabling efficient bulk resume distribution through CSV file processing.
+                                                </p>
+                                            </div>
+    
+                                            <div class="project-card">
+                                                <h3 class="accent-text" style="margin: 0 0 8px 0;">Vote Tracker</h3>
+                                                <p class="white-text" style="margin: 0;">
+                                                    Developed a React.js voting application with Firebase integration, featuring dynamic candidate selection by state and district, single-vote verification, and real-time top candidate tracking.
+                                                </p>
+                                            </div>
+    
+                                            <div class="project-card">
+                                                <h3 class="accent-text" style="margin: 0 0 8px 0;">Chennai Gated Website</h3>
+                                                <p class="white-text" style="margin: 0;">
+                                                    Designed and implemented a modern real estate platform using React.js, featuring an intuitive interface for property listings and comprehensive amenity showcases.
+                                                </p>
+                                            </div>
+                                        </div>
+    
+                                        <div style="margin-bottom: 20px;">
+                                            <p class="white-text" style="margin: 0 0 15px 0;">
                                                 I welcome the opportunity to discuss how my experience aligns with your team's needs. Please visit my portfolio at naveenak.netlify.app to explore these projects in detail.
                                             </p>
-                                            <p class="white-text" style="line-height: 1.6; margin: 20px 0 0 0;">
+                                            <p class="white-text" style="margin: 0;">
                                                 Best regards,<br>
                                                 Naveen K
                                             </p>
@@ -454,7 +537,7 @@ const createEmailContent = (recipientEmail, resumePath, resumeFilename) => {
     
                             <div style="background: #1a1a1a; padding: 15px; text-align: center;">
                                 <p style="color: #666666; font-size: 12px; margin: 0;">
-                                    This is an automated job application email. If you received this in error, please disregard.
+                                    This is an automated message. To unsubscribe, reply with "unsubscribe".
                                 </p>
                             </div>
                         </td>
@@ -462,8 +545,7 @@ const createEmailContent = (recipientEmail, resumePath, resumeFilename) => {
                 </table>
             </div>
         </body>
-        </html>`,
-        text: `
+        </html>`,        text: `
         Frontend Developer Application - Naveen K
         
         Dear Hiring Manager,
