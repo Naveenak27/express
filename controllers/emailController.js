@@ -51,7 +51,7 @@ const createEmailContent = (recipientEmail, resumePath, resumeFilename) => {
             address: process.env.EMAIL_USER
         },
         to: recipientEmail,
-        subject: `Job Application - ${job}`,
+        subject: `Frontend Developer Position - ${job}`,
         messageId: `<${messageId}>`,
         headers: {
             'List-Unsubscribe': `<mailto:${process.env.EMAIL_USER}?subject=unsubscribe>`,
@@ -61,107 +61,162 @@ const createEmailContent = (recipientEmail, resumePath, resumeFilename) => {
             'Feedback-ID': messageId
         },
         html: `
-<div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 680px; margin: 20px auto; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e8e8e8;">
-    <div style="background: #2b3d4f; padding: 24px; border-radius: 12px 12px 0 0; text-align: center;">
-        <h1 style="color: #ffffff; margin: 0; font-size: 22px; letter-spacing: 0.5px;">NAVEEN K</h1>
-        <p style="color: #a0b3c6; margin: 8px 0 0; font-size: 14px;">Application for ${job}</p>
-    </div>
-
-    <div style="padding: 32px 40px;">
-        <p style="color: #4a5568; margin: 0 0 20px; line-height: 1.6;">Dear Hiring Team,</p>
-        
-        <p style="color: #4a5568; margin: 0 0 20px; line-height: 1.6;">
-            I am writing to apply for the ${job} position at your company. With my strong foundation in web development and focus on creating efficient, user-friendly applications, I am confident in my ability to make meaningful contributions to your projects.
-        </p>
-
-        <div style="border-left: 3px solid #2b3d4f; padding-left: 20px; margin: 20px 0;">
-            <p style="color: #4a5568; margin: 0 0 16px; line-height: 1.6;">
-                My technical expertise includes:
-            </p>
-            
-            <ul style="margin: 0; padding: 0; list-style: none;">
-                <li style="margin: 8px 0; padding-left: 24px; position: relative; color: #4a5568;">
-                    <span style="position: absolute; left: 0; color: #2b3d4f;">▹</span>
-                    Modern JavaScript (ES6+), and React ecosystem including Hooks and Context API
-                </li>
-                <li style="margin: 8px 0; padding-left: 24px; position: relative; color: #4a5568;">
-                    <span style="position: absolute; left: 0; color: #2b3d4f;">▹</span>
-                    State management with Redux Toolkit and experience with React Query for data fetching
-                </li>
-                <li style="margin: 8px 0; padding-left: 24px; position: relative; color: #4a5568;">
-                    <span style="position: absolute; left: 0; color: #2b3d4f;">▹</span>
-                    Modern CSS including Flexbox, Grid, and CSS-in-JS solutions (Styled Components)
-                </li>
-                <li style="margin: 8px 0; padding-left: 24px; position: relative; color: #4a5568;">
-                    <span style="position: absolute; left: 0; color: #2b3d4f;">▹</span>
-                    Web performance optimization, lazy loading, and code splitting techniques
-                </li>
-                <li style="margin: 8px 0; padding-left: 24px; position: relative; color: #4a5568;">
-                    <span style="position: absolute; left: 0; color: #2b3d4f;">▹</span>
-basic knowledge in node,experss and mysql
-                    </li>
-            </ul>
+    <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 680px; margin: 20px auto; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e8e8e8;">
+        <div style="background: #2b3d4f; padding: 24px; border-radius: 12px 12px 0 0; text-align: center;">
+            <h1 style="color: #ffffff; margin: 0; font-size: 22px; letter-spacing: 0.5px;">NAVEEN K</h1>
+            <p style="color: #a0b3c6; margin: 8px 0 0; font-size: 14px;">Frontend Developer Application</p>
         </div>
-
-        <p style="color: #4a5568; margin: 20px 0; line-height: 1.6;">
-            I have successfully delivered responsive web applications with clean, maintainable code and excellent user experiences. My experience includes collaborating with cross-functional teams and implementing modern frontend architectures.
-        </p>
-
-        <p style="color: #4a5568; margin: 20px 0; line-height: 1.6;">
-            Please let me know if you need any additional information about my background or experience. I look forward to discussing how I can contribute to your team's success.
-        </p>
-
-        <div style="margin-top: 32px; border-top: 1px solid #e8e8e8; padding-top: 24px;">
-            <p style="margin: 0 0 8px; color: #4a5568;">
-                Best regards,<br>
-                <strong style="color: #2b3d4f;">${senderName}</strong>
+    
+        <div style="padding: 32px 40px;">
+            <p style="color: #4a5568; margin: 0 0 20px; line-height: 1.6;">Dear Hiring Manager,</p>
+            
+            <p style="color: #4a5568; margin: 0 0 20px; line-height: 1.6;">
+                I trust this message finds you well. I am Naveen, a Frontend Developer with over a year of experience crafting responsive web applications. I am writing to express my interest in contributing to your development team.
             </p>
-            <div style="margin-top: 12px;">
-                <a href="mailto:${process.env.EMAIL_USER}" style="color: #3182ce; text-decoration: none; font-size: 14px; margin-right: 16px;">✉️ Email</a>
-                <a href="${process.env.PORTFOLIO}" style="color: #3182ce; text-decoration: none; font-size: 14px;">🌐 Portfolio</a>
+    
+            <div style="border-left: 3px solid #2b3d4f; padding-left: 20px; margin: 20px 0;">
+                <p style="color: #4a5568; margin: 0 0 16px; line-height: 1.6;">
+                    Key Technical Proficiencies:
+                </p>
+                <ul style="margin: 0; padding: 0; list-style: none;">
+                    <li style="margin: 8px 0; padding-left: 24px; position: relative; color: #4a5568;">
+                        <span style="position: absolute; left: 0; color: #2b3d4f;">▹</span>
+                        Frontend Development: HTML5, CSS3, JavaScript (ES6+)
+                    </li>
+                    <li style="margin: 8px 0; padding-left: 24px; position: relative; color: #4a5568;">
+                        <span style="position: absolute; left: 0; color: #2b3d4f;">▹</span>
+                        React.js Development: Components, Hooks, Context API
+                    </li>
+                    <li style="margin: 8px 0; padding-left: 24px; position: relative; color: #4a5568;">
+                        <span style="position: absolute; left: 0; color: #2b3d4f;">▹</span>
+                        State Management: Redux Toolkit, React Query
+                    </li>
+                    <li style="margin: 8px 0; padding-left: 24px; position: relative; color: #4a5568;">
+                        <span style="position: absolute; left: 0; color: #2b3d4f;">▹</span>
+                        Backend Familiarity: Node.js, Express.js, MySQL
+                    </li>
+                </ul>
+            </div>
+    
+            <div style="margin: 24px 0;">
+                <p style="color: #4a5568; margin: 0 0 16px; line-height: 1.6;">
+                    Project Portfolio:
+                </p>
+                
+                <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin-bottom: 16px;">
+                    <h3 style="color: #2b3d4f; margin: 0 0 12px;">Cleaning Service Web Application</h3>
+                    <p style="color: #4a5568; margin: 0; line-height: 1.6;">
+                        Created a responsive interface using React.js and Redux Toolkit, featuring reusable components and seamless API integration for real-time data management.
+                    </p>
+                </div>
+    
+                <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin-bottom: 16px;">
+                    <h3 style="color: #2b3d4f; margin: 0 0 12px;">Portfolio Website</h3>
+                    <p style="color: #4a5568; margin: 0; line-height: 1.6;">
+                        Developed a personal portfolio using HTML, CSS, and JavaScript, integrating Firebase for secure form submissions and enhanced user interaction.
+                    </p>
+                </div>
+    
+                <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin-bottom: 16px;">
+                    <h3 style="color: #2b3d4f; margin: 0 0 12px;">Khannan Finance Website</h3>
+                    <p style="color: #4a5568; margin: 0; line-height: 1.6;">
+                        Built a professional finance company website with responsive design, implementing Formspree for reliable contact form functionality and user engagement.
+                    </p>
+                </div>
+    
+                <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin-bottom: 16px;">
+                    <h3 style="color: #2b3d4f; margin: 0 0 12px;">Automatic Resume Sender</h3>
+                    <p style="color: #4a5568; margin: 0; line-height: 1.6;">
+                        Engineered an automated email solution using React.js frontend and Node.js/Express.js backend with Nodemailer, enabling efficient bulk resume distribution through CSV file processing.
+                    </p>
+                </div>
+    
+                <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin-bottom: 16px;">
+                    <h3 style="color: #2b3d4f; margin: 0 0 12px;">Vote Tracker</h3>
+                    <p style="color: #4a5568; margin: 0; line-height: 1.6;">
+                        Developed a React.js voting application with Firebase integration, featuring dynamic candidate selection by state and district, single-vote verification, and real-time top candidate tracking.
+                    </p>
+                </div>
+    
+                <div style="background: #f8fafc; padding: 20px; border-radius: 8px;">
+                    <h3 style="color: #2b3d4f; margin: 0 0 12px;">Chennai Gated Website</h3>
+                    <p style="color: #4a5568; margin: 0; line-height: 1.6;">
+                        Designed and implemented a modern real estate platform using React.js, featuring an intuitive interface for property listings and comprehensive amenity showcases.
+                    </p>
+                </div>
+            </div>
+    
+            <p style="color: #4a5568; margin: 20px 0; line-height: 1.6;">
+                I welcome the opportunity to discuss how my experience aligns with your team's needs. Please visit my portfolio at naveenak.netlify.app to explore these projects in detail.
+            </p>
+    
+            <div style="margin-top: 32px; border-top: 1px solid #e8e8e8; padding-top: 24px;">
+                <p style="margin: 0 0 8px; color: #4a5568;">
+                    Best regards,<br>
+                    <strong style="color: #2b3d4f;">Naveen K</strong>
+                </p>
+                <div style="margin-top: 12px;">
+                    <p style="color: #4a5568; margin: 4px 0; font-size: 14px;">📞 7548865624</p>
+                    <a href="mailto:${process.env.EMAIL_USER}" style="color: #3182ce; text-decoration: none; font-size: 14px; display: block; margin: 4px 0;">📧 Email</a>
+                    <a href="${process.env.PORTFOLIO}" style="color: #3182ce; text-decoration: none; font-size: 14px; display: block; margin: 4px 0;">🌐 Portfolio</a>
+                </div>
             </div>
         </div>
+    
+        <div style="background: #f8f9fa; padding: 20px; text-align: center; border-radius: 0 0 12px 12px;">
+            <p style="color: #718096; font-size: 12px; margin: 8px 0;">
+                To opt out of future communications, please reply with "unsubscribe"
+            </p>
+        </div>
     </div>
-
-    <div style="background: #f8f9fa; padding: 20px; text-align: center; border-radius: 0 0 12px 12px;">
-        <p style="color: #718096; font-size: 12px; margin: 8px 0;">
-            To opt out of future communications, please reply with "unsubscribe"
-        </p>
-    </div>
-
-
-
-
-</div>      
-
-
-
-
-`,
+    `,
         text: `
-Job Application: ${job} 
-
-Dear Hiring Team,
-
-I am writing to apply for the ${job} position at your company. With my strong foundation in web development and focus on creating efficient, user-friendly applications, I am confident in my ability to make meaningful contributions to your projects.
-
-My technical expertise includes:
-- Modern JavaScript (ES6+), TypeScript, and React ecosystem including Hooks and Context API
-- State management with Redux Toolkit and experience with React Query for data fetching
-- Modern CSS including Flexbox, Grid, and CSS-in-JS solutions (Styled Components, Tailwind)
-- Web performance optimization, lazy loading, and code splitting techniques
-- Experience with development tools including Webpack, Vite, and modern testing frameworks
-- Familiarity with full-stack development patterns and RESTful architecture
-
-I have successfully delivered responsive web applications with clean, maintainable code and excellent user experiences. My experience includes collaborating with cross-functional teams and implementing modern frontend architectures.
-
-Please let me know if you need any additional information about my background or experience. I look forward to discussing how I can contribute to your team's success.
-
-Best regards,
-${senderName}
-${process.env.EMAIL_USER}
-${process.env.PORTFOLIO}
-        `,
+    Frontend Developer Application
+    
+    Dear Hiring Manager,
+    
+    I trust this message finds you well. I am Naveen, a Frontend Developer with over a year of experience crafting responsive web applications. I am writing to express my interest in contributing to your development team.
+    
+    Key Technical Proficiencies:
+    - Frontend Development: HTML5, CSS3, JavaScript (ES6+)
+    - React.js Development: Components, Hooks, Context API
+    - State Management: Redux Toolkit, React Query
+    - Backend Familiarity: Node.js, Express.js, MySQL
+    
+    Project Portfolio:
+    
+    Cleaning Service Web Application
+    - Created a responsive interface using React.js and Redux Toolkit
+    - Implemented reusable components and real-time data integration
+    
+    Portfolio Website
+    - Developed a personal portfolio using HTML, CSS, and JavaScript
+    - Integrated Firebase for secure form submissions
+    
+    Khannan Finance Website
+    - Built a professional finance company website with responsive design
+    - Implemented Formspree for reliable contact form functionality
+    
+    Automatic Resume Sender
+    - Engineered an automated email solution using React.js and Node.js/Express.js
+    - Enabled efficient bulk resume distribution through CSV file processing
+    
+    Vote Tracker
+    - Developed a React.js voting application with Firebase integration
+    - Implemented dynamic candidate selection and real-time tracking
+    
+    Chennai Gated Website
+    - Designed a modern real estate platform using React.js
+    - Created intuitive interface for property listings and amenities
+    
+    I welcome the opportunity to discuss how my experience aligns with your team's needs. Please visit my portfolio at naveenak.netlify.app to explore these projects in detail.
+    
+    Best regards,
+    Naveen K
+    Phone: 7548865624
+    Email: ${process.env.EMAIL_USER}
+    Portfolio: ${process.env.PORTFOLIO}
+    `,
         attachments: [{
             filename: resumeFilename,
             path: resumePath,
@@ -174,6 +229,7 @@ ${process.env.PORTFOLIO}
             recipient: process.env.EMAIL_USER
         }
     };
+
 };
 
 
