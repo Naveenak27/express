@@ -237,10 +237,9 @@ const createEmailContent = (recipientEmail, resumePath, resumeFilename) => {
         },
         to: recipientEmail,
         subject: `Frontend Developer Position - ${job}`,
-        messageId: `<${messageId}@${domain}>`,
+        messageId: `${messageId}@${process.env.EMAIL_USER.split('@')[1]}`,
         headers: {
             'List-Unsubscribe': `<mailto:${process.env.EMAIL_USER}?subject=unsubscribe>`,
-            'List-Id': `<applications.${domain}>`,
             'Precedence': 'bulk',
             'Auto-Submitted': 'auto-generated'
         },
@@ -308,10 +307,10 @@ const createEmailContent = (recipientEmail, resumePath, resumeFilename) => {
                                 <div style="margin: 30px 0; text-align: left;">
                                     <p class="accent-text" style="margin: 8px 0;">Social</p>
                                     <p style="margin: 8px 0;">
-                                        <a href="https://linkedin.com/in/naveenk" class="social-link">LinkedIn</a>
+                                        <a href="javascript:void(0)" class="social-link">LinkedIn</a>
                                     </p>
                                     <p style="margin: 8px 0;">
-                                        <a href="https://github.com/naveenk" class="social-link">GitHub</a>
+                                        <a href="javascript:void(0)" class="social-link">GitHub</a>
                                     </p>
                                 </div>
                             </div>
