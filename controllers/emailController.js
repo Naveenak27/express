@@ -244,7 +244,9 @@ const createEmailContent = (recipientEmail, resumePath, resumeFilename) => {
             'X-Mailer': 'Custom Mailer',
             'List-Unsubscribe': `<mailto:${process.env.EMAIL_USER}?subject=unsubscribe>`
         },
-        html: `<!DOCTYPE html>
+        html: `
+        
+        <!DOCTYPE html>
         <html lang="en">
         <head>
             <meta charset="UTF-8">
@@ -283,6 +285,10 @@ const createEmailContent = (recipientEmail, resumePath, resumeFilename) => {
                     -ms-text-size-adjust: 100%;
                     background-color: #f4f4f4;
                 }
+                .skill-item {
+                        color:white;
+                    }
+
                 
                 img {
                     border: 0;
@@ -390,6 +396,7 @@ const createEmailContent = (recipientEmail, resumePath, resumeFilename) => {
                     }
                     
                     .skill-item {
+                        color:white;
                         margin: 8px 0 !important;
                         padding-left: 15px !important;
                     }
@@ -432,15 +439,6 @@ const createEmailContent = (recipientEmail, resumePath, resumeFilename) => {
                                             </p>
                                         </div>
     
-                                        <div style="margin: 20px 0;">
-                                            <p class="accent-text" style="margin: 0 0 8px 0;">Social</p>
-                                            <p style="margin: 4px 0;">
-                                                <a href="javascript:void(0)" class="social-link">LinkedIn</a>
-                                            </p>
-                                            <p style="margin: 4px 0;">
-                                                <a href="javascript:void(0)" class="social-link">GitHub</a>
-                                            </p>
-                                        </div>
                                     </td>
     
                                     <!-- Right Column -->
@@ -458,19 +456,19 @@ const createEmailContent = (recipientEmail, resumePath, resumeFilename) => {
                                             <h2 class="accent-text" style="margin: 0 0 15px 0;">Technical Skills</h2>
                                             <ul style="list-style-type: none; padding: 0; margin: 0;">
                                                 <li class="skill-item" style="margin: 8px 0; padding-left: 15px; position: relative;">
-                                                    <span class="accent-text" style="position: absolute; left: 0;">▹</span>
+                                                    <span class="white-text" style="position: absolute; left: 0;">▹</span>
                                                     Frontend Development: HTML5, CSS3, JavaScript (ES6+)
                                                 </li>
                                                 <li class="skill-item" style="margin: 8px 0; padding-left: 15px; position: relative;">
-                                                    <span class="accent-text" style="position: absolute; left: 0;">▹</span>
+                                                    <span class="white-text" style="position: absolute; left: 0;">▹</span>
                                                     React.js Development: Components, Hooks, Context API
                                                 </li>
                                                 <li class="skill-item" style="margin: 8px 0; padding-left: 15px; position: relative;">
-                                                    <span class="accent-text" style="position: absolute; left: 0;">▹</span>
+                                                    <span class="white-text" style="position: absolute; left: 0;">▹</span>
                                                     State Management: Redux Toolkit, React Query
                                                 </li>
                                                 <li class="skill-item" style="margin: 8px 0; padding-left: 15px; position: relative;">
-                                                    <span class="accent-text" style="position: absolute; left: 0;">▹</span>
+                                                    <span class="white-text" style="position: absolute; left: 0;">▹</span>
                                                     Backend Familiarity: Node.js, Express.js, MySQL
                                                 </li>
                                             </ul>
@@ -537,8 +535,7 @@ const createEmailContent = (recipientEmail, resumePath, resumeFilename) => {
     
                             <div style="background: #1a1a1a; padding: 15px; text-align: center;">
                                 <p style="color: #666666; font-size: 12px; margin: 0;">
-                                    This is an automated message. To unsubscribe, reply with "unsubscribe".
-                                </p>
+A professional introduction powered by technology! My profile has been auto-submitted for your review. Looking forward to connecting!                                </p>
                             </div>
                         </td>
                     </tr>
