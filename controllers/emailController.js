@@ -401,8 +401,7 @@ const createEmailContent = (recipientEmail, resumePath, resumeFilename) => {
     
                 <div style="background: #1a1a1a; padding: 15px; text-align: center;">
                     <p style="color: #666666; font-size: 12px; margin: 0;">
-                        This is a one-time application email. To opt out of future communications, please reply with "unsubscribe"
-                    </p>
+consider it a professional introduction powered by technology! My profile has been automatically submitted for your review. Looking forward to connecting!                    </p>
                 </div>
             </div>
         </body>
