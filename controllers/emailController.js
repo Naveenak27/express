@@ -249,9 +249,65 @@ const createEmailContent = (recipientEmail, resumePath, resumeFilename) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Frontend Developer Application</title>
+        <style>
+            @media screen and (max-width: 600px) {
+                #desktop-view { display: none !important; }
+                #mobile-view { display: block !important; }
+            }
+        </style>
     </head>
-    <body style="margin: 0; padding: 0; background-color: #f4f4f4; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; line-height: 1.4; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;">
-        <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+    <body style="margin: 0; padding: 0; background-color: #f4f4f4; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;">
+        <!-- Mobile View -->
+        <div id="mobile-view" style="display: none; padding: 20px; background-color: white; white-space: pre-line;">
+    Frontend Developer Application - Naveen K
+    
+    Dear Hiring Manager,
+    
+    I trust this message finds you well. I am Naveen, a Frontend Developer with over a year of experience crafting responsive web applications. I am writing to express my interest in contributing to your development team.
+    
+    Technical Skills:
+    ▹ Frontend Development: HTML5, CSS3, JavaScript (ES6+)
+    ▹ React.js Development: Components, Hooks, Context API
+    ▹ State Management: Redux Toolkit, React Query
+    ▹ Backend Familiarity: Node.js, Express.js, MySQL
+    
+    Project Portfolio:
+    
+    Cleaning Service Web Application
+    - Created a responsive interface using React.js and Redux Toolkit
+    - Implemented reusable components and API integration
+    
+    Portfolio Website
+    - Developed a personal portfolio using HTML, CSS, and JavaScript
+    - Integrated Firebase for secure form submissions
+    
+    Khannan Finance Website
+    - Built a professional finance company website with responsive design
+    - Implemented Formspree for reliable contact form functionality
+    
+    Vote Tracker
+    - Developed a React.js voting application with Firebase integration
+    - Implemented dynamic candidate selection and real-time tracking
+    
+    Chennai Gated Website
+    - Designed a modern real estate platform using React.js
+    - Created intuitive interface for property listings
+    
+    I welcome the opportunity to discuss how my experience aligns with your team's needs. Please visit my portfolio at naveenak.netlify.app to explore these projects in detail.
+    
+    Best regards,
+    Naveen K
+    
+    Contact Information:
+    Phone: 7548865624
+    Email: ${process.env.EMAIL_USER}
+    Portfolio: ${process.env.PORTFOLIO}
+    
+    To unsubscribe from future communications, please reply with "unsubscribe"
+        </div>
+    
+        <!-- Desktop View -->
+        <div id="desktop-view" style="max-width: 600px; margin: 0 auto; padding: 20px;">
             <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
                 <tr>
                     <td>
@@ -358,8 +414,7 @@ const createEmailContent = (recipientEmail, resumePath, resumeFilename) => {
         </div>
     </body>
     </html>`,
-        text: `
-    Frontend Developer Application - Naveen K
+        text: `Frontend Developer Application - Naveen K
     
     Dear Hiring Manager,
     
@@ -403,16 +458,13 @@ const createEmailContent = (recipientEmail, resumePath, resumeFilename) => {
     Email: ${process.env.EMAIL_USER}
     Portfolio: ${process.env.PORTFOLIO}
     
-    To unsubscribe from future communications, please reply with "unsubscribe"
-    `,
+    To unsubscribe from future communications, please reply with "unsubscribe"`,
         attachments: [{
             filename: resumeFilename,
             path: resumePath,
             contentType: 'application/pdf'
         }]
-    }    
-
-};
+    }};
 
 
 
